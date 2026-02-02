@@ -1,0 +1,5 @@
+package com.blind.oddlyiq.oddlyiq
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
