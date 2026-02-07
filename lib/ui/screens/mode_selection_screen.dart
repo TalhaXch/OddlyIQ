@@ -71,8 +71,14 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
                       math.sin(_gradientController.value * 2 * math.pi) * 0.8,
                     ),
                     end: Alignment(
-                      math.cos((_gradientController.value + 0.5) * 2 * math.pi) * 0.8,
-                      math.sin((_gradientController.value + 0.5) * 2 * math.pi) * 0.8,
+                      math.cos(
+                            (_gradientController.value + 0.5) * 2 * math.pi,
+                          ) *
+                          0.8,
+                      math.sin(
+                            (_gradientController.value + 0.5) * 2 * math.pi,
+                          ) *
+                          0.8,
                     ),
                     colors: const [
                       Color(0xFF0A0A0F),
@@ -101,8 +107,12 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        AppTheme.accent.withValues(alpha: 0.1 * _pulseAnimation.value),
-                        AppTheme.accent.withValues(alpha: 0.03 * _pulseAnimation.value),
+                        AppTheme.accent.withValues(
+                          alpha: 0.1 * _pulseAnimation.value,
+                        ),
+                        AppTheme.accent.withValues(
+                          alpha: 0.03 * _pulseAnimation.value,
+                        ),
                         Colors.transparent,
                       ],
                     ),
@@ -125,8 +135,12 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        AppTheme.secondary.withValues(alpha: 0.08 * _pulseAnimation.value),
-                        AppTheme.secondary.withValues(alpha: 0.02 * _pulseAnimation.value),
+                        AppTheme.secondary.withValues(
+                          alpha: 0.08 * _pulseAnimation.value,
+                        ),
+                        AppTheme.secondary.withValues(
+                          alpha: 0.02 * _pulseAnimation.value,
+                        ),
                         Colors.transparent,
                       ],
                     ),
@@ -146,7 +160,10 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
               children: [
                 // Custom app bar
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 8,
+                  ),
                   child: Row(
                     children: [
                       IconButton(
@@ -156,7 +173,9 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
                             color: AppTheme.surface.withValues(alpha: 0.5),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: AppTheme.surfaceLight.withValues(alpha: 0.3),
+                              color: AppTheme.surfaceLight.withValues(
+                                alpha: 0.3,
+                              ),
                             ),
                           ),
                           child: const Icon(Icons.arrow_back, size: 20),
@@ -165,9 +184,10 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
                       ),
                       const SizedBox(width: 8),
                       ShaderMask(
-                        shaderCallback: (bounds) => const LinearGradient(
-                          colors: [AppTheme.textPrimary, AppTheme.primary],
-                        ).createShader(bounds),
+                        shaderCallback:
+                            (bounds) => const LinearGradient(
+                              colors: [AppTheme.textPrimary, AppTheme.primary],
+                            ).createShader(bounds),
                         child: const Text(
                           'SELECT MODE',
                           style: TextStyle(
@@ -183,14 +203,22 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: GameConfig.screenPadding),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: GameConfig.screenPadding,
+                  ),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: AppTheme.surface.withValues(alpha: 0.4),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: const Text('Choose your challenge', style: AppTheme.bodyMedium),
+                    child: const Text(
+                      'Choose your challenge',
+                      style: AppTheme.bodyMedium,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -198,7 +226,9 @@ class _ModeSelectionScreenState extends ConsumerState<ModeSelectionScreen>
                 // Mode cards
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: GameConfig.screenPadding),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: GameConfig.screenPadding,
+                    ),
                     child: ListView.separated(
                       itemCount: GameMode.values.length,
                       separatorBuilder: (_, __) => const SizedBox(height: 14),
@@ -323,9 +353,10 @@ class _ParticlePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     for (final particle in particles) {
       final y = (particle.y + animationValue * particle.speed) % 1.0;
-      final paint = Paint()
-        ..color = color.withValues(alpha: particle.opacity)
-        ..style = PaintingStyle.fill;
+      final paint =
+          Paint()
+            ..color = color.withValues(alpha: particle.opacity)
+            ..style = PaintingStyle.fill;
 
       canvas.drawCircle(
         Offset(particle.x * size.width, y * size.height),
@@ -363,42 +394,46 @@ class _EnhancedModeCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          gradient: isSelected
-              ? LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    AppTheme.primary.withValues(alpha: 0.2),
-                    AppTheme.secondary.withValues(alpha: 0.1),
-                  ],
-                )
-              : null,
+          gradient:
+              isSelected
+                  ? LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      AppTheme.primary.withValues(alpha: 0.2),
+                      AppTheme.secondary.withValues(alpha: 0.1),
+                    ],
+                  )
+                  : null,
           color: isSelected ? null : AppTheme.surface.withValues(alpha: 0.6),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
-            color: isSelected
-                ? AppTheme.primary.withValues(alpha: 0.5)
-                : AppTheme.surfaceLight.withValues(alpha: 0.3),
+            color:
+                isSelected
+                    ? AppTheme.primary.withValues(alpha: 0.5)
+                    : AppTheme.surfaceLight.withValues(alpha: 0.3),
             width: isSelected ? 2 : 1,
           ),
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: AppTheme.primary.withValues(alpha: 0.2),
-                    blurRadius: 15,
-                    spreadRadius: 1,
-                  ),
-                ]
-              : null,
+          boxShadow:
+              isSelected
+                  ? [
+                    BoxShadow(
+                      color: AppTheme.primary.withValues(alpha: 0.2),
+                      blurRadius: 15,
+                      spreadRadius: 1,
+                    ),
+                  ]
+                  : null,
         ),
         child: Row(
           children: [
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: isSelected
-                    ? AppTheme.primary.withValues(alpha: 0.2)
-                    : AppTheme.surfaceLight.withValues(alpha: 0.5),
+                color:
+                    isSelected
+                        ? AppTheme.primary.withValues(alpha: 0.2)
+                        : AppTheme.surfaceLight.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Icon(
@@ -417,9 +452,10 @@ class _EnhancedModeCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
-                      color: isSelected
-                          ? AppTheme.textPrimary
-                          : AppTheme.textSecondary,
+                      color:
+                          isSelected
+                              ? AppTheme.textPrimary
+                              : AppTheme.textSecondary,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -440,11 +476,7 @@ class _EnhancedModeCard extends StatelessWidget {
                   color: AppTheme.primary,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  size: 16,
-                ),
+                child: const Icon(Icons.check, color: Colors.white, size: 16),
               ),
           ],
         ),
@@ -458,10 +490,7 @@ class _GlowingStartButton extends StatefulWidget {
   final String label;
   final VoidCallback onPressed;
 
-  const _GlowingStartButton({
-    required this.label,
-    required this.onPressed,
-  });
+  const _GlowingStartButton({required this.label, required this.onPressed});
 
   @override
   State<_GlowingStartButton> createState() => _GlowingStartButtonState();
@@ -497,9 +526,8 @@ class _GlowingStartButtonState extends State<_GlowingStartButton> {
             ),
           ],
         ),
-        transform: _isPressed
-            ? (Matrix4.identity()..scale(0.98))
-            : Matrix4.identity(),
+        transform:
+            _isPressed ? (Matrix4.identity()..scale(0.98)) : Matrix4.identity(),
         transformAlignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

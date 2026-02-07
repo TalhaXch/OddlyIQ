@@ -72,10 +72,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
                       math.cos(_bgController.value * 2 * math.pi) * 0.5,
                     ),
                     radius: 1.5,
-                    colors: const [
-                      Color(0xFF12121A),
-                      Color(0xFF0A0A0F),
-                    ],
+                    colors: const [Color(0xFF12121A), Color(0xFF0A0A0F)],
                   ),
                 ),
               );
@@ -127,65 +124,68 @@ class _GameScreenState extends ConsumerState<GameScreen>
 
           // Main content
           SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(GameConfig.screenPadding),
-          child: Column(
-            children: [
-              // Header
-              GameHeader(
-                level: gameState.levelNumber,
-                score: gameState.score,
-                timeRemaining: gameState.timeRemaining,
-                maxTime: level.timeSeconds,
-                comboStreak: gameState.comboStreak,
-                modeName: gameState.mode.displayName,
-              ),
-
-              const Spacer(),
-
-              // Game grid
-              Expanded(
-                flex: 4,
-                child: Center(
-                  child: GameGrid(
-                    level: level,
-                    selectedIndex: gameState.selectedTileIndex,
-                    showResult: showResult,
-                    onTileTap: (index) {
-                      ref
-                          .read(gameControllerProvider.notifier)
-                          .selectTile(index);
-                    },
+            child: Padding(
+              padding: const EdgeInsets.all(GameConfig.screenPadding),
+              child: Column(
+                children: [
+                  // Header
+                  GameHeader(
+                    level: gameState.levelNumber,
+                    score: gameState.score,
+                    timeRemaining: gameState.timeRemaining,
+                    maxTime: level.timeSeconds,
+                    comboStreak: gameState.comboStreak,
+                    modeName: gameState.mode.displayName,
                   ),
-                ),
-              ),
 
-              const Spacer(),
+                  const Spacer(),
 
-              // Instruction
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  color: AppTheme.surface.withValues(alpha: 0.5),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: AppTheme.surfaceLight.withValues(alpha: 0.3),
+                  // Game grid
+                  Expanded(
+                    flex: 4,
+                    child: Center(
+                      child: GameGrid(
+                        level: level,
+                        selectedIndex: gameState.selectedTileIndex,
+                        showResult: showResult,
+                        onTileTap: (index) {
+                          ref
+                              .read(gameControllerProvider.notifier)
+                              .selectTile(index);
+                        },
+                      ),
+                    ),
                   ),
-                ),
-                child: Text(
-                  'Find the odd one',
-                  style: TextStyle(
-                    color: AppTheme.textSecondary,
-                    fontSize: 14,
-                    letterSpacing: 0.5,
+
+                  const Spacer(),
+
+                  // Instruction
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppTheme.surface.withValues(alpha: 0.5),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: AppTheme.surfaceLight.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: Text(
+                      'Find the odd one',
+                      style: TextStyle(
+                        color: AppTheme.textSecondary,
+                        fontSize: 14,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 16),
+                ],
               ),
-              const SizedBox(height: 16),
-            ],
+            ),
           ),
-        ),
-      ),
         ],
       ),
     );
