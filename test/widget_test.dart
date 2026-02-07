@@ -7,6 +7,6 @@ void main() {
     await tester.pumpWidget(const ProviderScope(child: OddlyIQApp()));
 
     expect(find.text('ODDLYIQ'), findsOneWidget);
-    expect(find.text('Find The Odd One Out'), findsOneWidget);
+    expect(find.text('Find The Odd One'), findsOneWidget);
   });
 }
